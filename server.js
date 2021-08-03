@@ -3,6 +3,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 const path = require('path')
 const app = express()
 
+port = process.env.PORT || 3001
+
 app.use('/graphql',createProxyMiddleware({ 
 	target: 'https://n7b67.sse.codesandbox.io', 
 	changeOrigin: true,
@@ -15,7 +17,7 @@ app.use(function(req, res){
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"))
 })
 
-app.listen(3001)
+app.listen(port)
 
 // const fetchData = async (req,res) => {
 // 	const {  } = req
